@@ -248,7 +248,7 @@ Pour utiliser vos skills dans n'importe quel projet VS Code, vous pouvez les cop
 ```
 mv .github/skills/internal-comms ~/.copilot/skills/
 ```
-ou pour ceux qui utilise Claude :
+ou pour ceux qui utilisent Claude :
 ```
 mv .github/skills/internal-comms ~/.claude/skills/
 ```
