@@ -255,11 +255,13 @@ mv .github/skills/internal-comms ~/.claude/skills/
 
 ## Etape 7 : Explorer les skills existants
 
-👉 **Action** : Regardez le dossier `.github/skills/` et explorez les autres skills disponibles en particulier le skill `pdf-to-markdown`. Observez comment les dépendances sont gérées au début du script.
+👉 **Action** : Regardez le dossier `.github/skills/` et explorez les autres skills disponibles en particulier le skill `pdf-to-markdown`. Observez comment les dépendances sont gérées au début du script, plus d'informations [ici](https://docs.astral.sh/uv/guides/scripts/#locking-dependencies)
 
 ---
 > **📚 Ressources** :
 > - [OpenAI Agent Skills](https://github.com/openai/skills/tree/main)
+> - [Anthropic Agent Skills](https://github.com/anthropics/skills)
+> - [The Complete Guide to Building Skill for Claude](https://resources.anthropic.com/hubfs/The-Complete-Guide-to-Building-Skill-for-Claude.pdf)
 > - [VS Code and Agent Skills](https://code.visualstudio.com/docs/copilot/customization/agent-skills)
 > - [Agent Skills](https://agentskills.io)
 
