@@ -86,7 +86,7 @@ pytest tests/ -v               # Lancer les tests
 2. **Créez le fichier** à la racine du projet (ou dans `.github/` pour `copilot-instructions.md`)
 3. **Rédigez les instructions** adaptées à ce projet de TP. Inspirez-vous de l'exemple ci-dessus et incluez au minimum :
    - Une description du projet
-   - La structure des dossiers (`.github/skills/`, `examples/`, `resources/`, etc.)
+   - La structure des dossiers
    - Les conventions à suivre
 4. **Testez** : Ouvrez le chat Copilot et posez une question sur le projet. L'IA devrait désormais avoir connaissance du contexte que vous avez défini.
 
@@ -135,13 +135,7 @@ mon-skill/
 
 ### ⚙️ Comment fonctionne un Skill ? (Progressive Disclosure)
 
-Les skills utilisent un mécanisme de **divulgation progressive** pour gérer efficacement le contexte de l'IA :
-
-```mermaid
-graph LR
-    A["1️⃣ Découverte<br/><i>~100 tokens</i>"] --> B["2️⃣ Activation<br/><i>< 5000 tokens</i>"]
-    B --> C["3️⃣ Exécution<br/><i>À la demande</i>"]
-```
+Les skills utilisent un mécanisme de **divulgation progressive** pour gérer efficacement le contexte de l'IA.
 
 1. **Découverte** : Au démarrage, l'agent charge **uniquement** le `name` et la `description` de chaque skill disponible (~100 tokens chacun). C'est suffisant pour savoir quand un skill pourrait être pertinent.
 
@@ -189,16 +183,16 @@ Après le frontmatter, le corps du fichier contient les **instructions en Markdo
 
 > 📏 **Recommandation** : Gardez le `SKILL.md` sous **500 lignes**. Si vous avez beaucoup de contenu de référence, déplacez-le dans des fichiers séparés dans `references/`.
 
-### � Explorez le Skill du TP
+### Explorez le Skill du TP
 
-�📂 Ouvrez le dossier `.github/skills/internal-comms` que nous avons créé.
+📂 Ouvrez le dossier `.github/skills/internal-comms` que nous avons créé.
 Vous y trouverez :
 - `SKILL.md` : Le cerveau de l'agent avec le frontmatter et les instructions.
 - `examples/` : Des fichiers Markdown montrant à l'agent ce qu'on attend de lui (Few-Shot Prompting).
 - `resources/` : De la documentation contextuelle (ex: Guide de ton).
 
 👉 **Action** : Lisez le fichier `SKILL.md`. Repérez :
-1. Le **frontmatter** : quel `name` définit-il ? C'est ce nom que vous utiliserez avec `@` dans le chat.
+1. Le **frontmatter** : quel `name` définit-il ? C'est ce nom que vous utiliserez avec `/` dans le chat.
 2. Les **instructions** : quelles règles de style ou de ton sont données à l'agent ?
 3. Les **références aux fichiers** : le `SKILL.md` fait-il référence à des fichiers dans `examples/` ou `resources/` ?
 
@@ -207,7 +201,7 @@ Ouvrez le Chat Copilot (CTRL+CMD+I ou via la barre latérale).
 
 👉 **Action** : Tapez la commande suivante :
 ```
-@internal-comms Aide-moi à rédiger un message Mattermost pour annoncer que le serveur de prod va être redémarré dans 10 minutes.
+/internal-comms Aide-moi à rédiger un message Mattermost pour annoncer que le serveur de prod va être redémarré dans 10 minutes.
 ```
 
 **Observation** :
@@ -224,7 +218,7 @@ Nous allons modifier le skill pour voir comment cela affecte ses réponses.
 
 👉 **Action** : Retestez dans le chat :
 ```
-@internal-comms Annonce que la machine à café est en panne via Mattermost.
+/internal-comms Annonce que la machine à café est en panne via Mattermost.
 ```
 *Note : Il peut être nécessaire de recharger la fenêtre VS Code (Developer: Reload Window) pour que les changements soient pris en compte.*
 
@@ -234,7 +228,7 @@ Imaginez que nous voulons aussi gérer des posts **LinkedIn** (X).
 👉 **Challenge** :
 1. Créez un fichier `examples/linkedin_example.md` avec 1 ou 2 exemples de posts (courts, hashtags). Vous pouvez vous inspirer des posts de notre influvoleur préféré : NCV ou des posts d'OCTO, La Grosse Conf, etc.
 2. Modifiez `SKILL.md` pour ajouter une section "LinkedIn".
-3. Testez : `@internal-comms Rédige un post LinkedIn pour annoncer ta participation à la Grosse Conf`
+3. Testez : `/internal-comms Rédige un post LinkedIn pour annoncer ta participation à la Grosse Conf`
 
 ## Étape 5 : Skills Avancés & Scripts
 Les Agents Skills peuvent aussi exécuter des tâches techniques. Nous avons préparé un second skill (`rag-creator`) capable d'initialiser un projet.
@@ -242,7 +236,7 @@ Les Agents Skills peuvent aussi exécuter des tâches techniques. Nous avons pr�
 1. Regardez le fichier `.github/skills/rag-creator/scripts/setup_rag.py`.
 2. Dans le chat, tapez :
 ```
-@rag-creator Crée-moi un nouveau projet RAG.
+/rag-creator Crée-moi un nouveau projet RAG.
 ```
 3. L'agent va détecter le script et vous proposer de l'exécuter. Validez la demande.
 4. Une fois terminé, vous verrez apparaître les dossiers `data`, `src` et `notebooks` dans votre explorateur de fichiers.
@@ -254,6 +248,14 @@ Pour utiliser vos skills dans n'importe quel projet VS Code, vous pouvez les cop
 ```
 mv .github/skills/internal-comms ~/.copilot/skills/
 ```
+ou pour ceux qui utilise Claude :
+```
+mv .github/skills/internal-comms ~/.claude/skills/
+```
+
+## Etape 7 : Explorer les skills existants
+
+👉 **Action** : Regardez le dossier `.github/skills/` et explorez les autres skills disponibles en particulier le skill `pdf-to-markdown`. Observez comment les dépendances sont gérées au début du script.
 
 ---
 > **📚 Ressources** :
